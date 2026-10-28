@@ -34,7 +34,7 @@
   td { padding: 7px 4px; border-bottom: 1px solid var(--viola-chiaro); vertical-align: top; overflow-wrap: anywhere; }
   td:first-child { color: #5b5480; width: 40%; }
   /* Pubblicità finte: hanno i nomi che usano le pubblicità vere, quindi un buon blocco le nasconde. */
-  .finta { background: repeating-linear-gradient(45deg, #ffe600, #ffe600 12px, #ff2d55 12px, #ff2d55 24px);
+  .finta { display: block; background: repeating-linear-gradient(45deg, #ffe600, #ffe600 12px, #ff2d55 12px, #ff2d55 24px);
            color: #000; font-weight: 900; text-align: center; padding: 22px 8px; margin: 10px 0; border-radius: 6px; font-size: 18px; }
 </style>
 </head>
@@ -50,7 +50,8 @@
     <p class="nota" id="riassunto">Le prove sono in corso, aspetta qualche secondo.</p>
   </section>
 
-  <div class="adsbygoogle finta">PUBBLICITÀ! HAI VINTO UN IPHONE! 📱 (se vedi questo riquadro, non è stato nascosto)</div>
+  <!-- Stesso codice delle pubblicità Google vere (AdSense), con un identificativo finto. -->
+  <ins class="adsbygoogle finta" data-ad-client="ca-pub-0000000000000000" data-ad-slot="0000000000">PUBBLICITÀ! HAI VINTO UN IPHONE! 📱 (se vedi questo riquadro, non è stato nascosto)</ins>
 
   <section>
     <h2>1. Pubblicità e tracciatori</h2>
