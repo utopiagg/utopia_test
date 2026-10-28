@@ -1,6 +1,6 @@
 {
-  "codice": 7,
-  "nome": "1.1.7",
-  "pagina": "https://github.com/utopiagg/utopia_browser/releases/tag/v1.1.7",
-  "novita": "Blocco pubblicità con il motore completo di Brave, reindirizzamenti più severi, firma fissa per aggiornare senza disinstallare."
+  "codice": 9,
+  "nome": "1.2.9",
+  "pagina": "https://github.com/utopiagg/utopia_browser/releases/tag/v1.2.9",
+  "novita": "Nasconde anche i riquadri pubblicitari .adsbygoogle e .ad-banner rimasti visibili."
 }
