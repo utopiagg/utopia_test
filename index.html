@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Utopia - Pagina di prova</title>
+<!-- Script pubblicitari veri: un browser senza protezioni li carica. -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+<style>
+  :root { --viola: #7c3aed; --viola-scuro: #5b21b6; --viola-chiaro: #f5f3ff; --bordo: #ddd6fe;
+          --testo: #1f1147; --ok: #15803d; --ok-sf: #dcfce7; --ko: #b91c1c; --ko-sf: #fee2e2; --attesa: #a16207; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; background: #fff; color: var(--testo); }
+  header { background: linear-gradient(135deg, #a66bff, var(--viola-scuro)); color: #fff; padding: 24px 16px; text-align: center; }
+  header h1 { margin: 0 0 4px; font-size: 24px; }
+  header p { margin: 0; opacity: .9; }
+  main { max-width: 760px; margin: 0 auto; padding: 16px; }
+  section { border: 1px solid var(--bordo); border-radius: 16px; padding: 16px; margin-bottom: 16px; }
+  h2 { margin: 0 0 12px; font-size: 18px; color: var(--viola-scuro); }
+  .punteggio { font-size: 40px; font-weight: 800; text-align: center; margin: 4px 0; }
+  .nota { font-size: 14px; color: #5b5480; }
+  ul.prove { list-style: none; padding: 0; margin: 0; }
+  ul.prove li { display: flex; justify-content: space-between; gap: 8px; padding: 8px 0; border-bottom: 1px solid var(--viola-chiaro); font-size: 14px; }
+  ul.prove li:last-child { border-bottom: none; }
+  .esito { font-weight: 700; white-space: nowrap; padding: 2px 10px; border-radius: 999px; font-size: 13px; }
+  .esito.ok { color: var(--ok); background: var(--ok-sf); }
+  .esito.ko { color: var(--ko); background: var(--ko-sf); }
+  .esito.attesa { color: var(--attesa); background: #fef9c3; }
+  .nome { overflow-wrap: anywhere; }
+  button { background: var(--viola); color: #fff; border: none; border-radius: 12px; padding: 12px 16px; font-size: 15px; font-weight: 600; width: 100%; margin: 6px 0; }
+  button:active { background: var(--viola-scuro); }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  td { padding: 7px 4px; border-bottom: 1px solid var(--viola-chiaro); vertical-align: top; overflow-wrap: anywhere; }
+  td:first-child { color: #5b5480; width: 40%; }
+  /* Pubblicità finte: hanno i nomi che usano le pubblicità vere, quindi un buon blocco le nasconde. */
+  .finta { background: repeating-linear-gradient(45deg, #ffe600, #ffe600 12px, #ff2d55 12px, #ff2d55 24px);
+           color: #000; font-weight: 900; text-align: center; padding: 22px 8px; margin: 10px 0; border-radius: 6px; font-size: 18px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>👑🐍 Prova di sicurezza Utopia</h1>
+  <p>Pubblicità, tracciatori, pop-up e reindirizzamenti finti</p>
+</header>
+<main>
+  <section>
+    <h2>Risultato</h2>
+    <div class="punteggio" id="punteggio">…</div>
+    <p class="nota" id="riassunto">Le prove sono in corso, aspetta qualche secondo.</p>
+  </section>
+
+  <div class="adsbygoogle finta">PUBBLICITÀ! HAI VINTO UN IPHONE! 📱 (se vedi questo riquadro, non è stato nascosto)</div>
+
+  <section>
+    <h2>1. Pubblicità e tracciatori</h2>
+    <p class="nota">La pagina prova a contattare siti di pubblicità e tracciamento veri. "Bloccato" è il risultato buono.</p>
+    <ul class="prove" id="lista-rete"></ul>
+  </section>
+
+  <div class="ad-banner finta">SCARICA ORA! 🔥 OFFERTA LIMITATA (riquadro pubblicitario finto)</div>
+
+  <section>
+    <h2>2. Riquadri pubblicitari nella pagina</h2>
+    <p class="nota">Riquadri finti con i nomi usati dalle pubblicità vere. Devono sparire.</p>
+    <ul class="prove" id="lista-riquadri"></ul>
+  </section>
+
+  <div id="div-gpt-ad-123456-0" class="finta">CASINÒ ONLINE 🎰 BONUS 500€ (riquadro pubblicitario finto)</div>
+
+  <section>
+    <h2>3. Pop-up</h2>
+    <ul class="prove" id="lista-popup"></ul>
+    <p class="nota">Il secondo test apre un pop-up dopo il tuo tocco, verso un sito di pop-up pubblicitari: Utopia deve bloccarlo.</p>
+    <button id="popup-clic">Prova pop-up dopo un tocco</button>
+  </section>
+
+  <section>
+    <h2>4. Reindirizzamento</h2>
+    <p class="nota">Tocca il pulsante e poi <b>non toccare più lo schermo</b>: dopo 6 secondi la pagina prova a portarti su un altro sito da sola. Utopia deve fermarla e chiederti se vuoi andarci.</p>
+    <button id="redirect">Avvia la prova di reindirizzamento</button>
+    <p class="nota" id="redirect-stato"></p>
+  </section>
+
+  <section>
+    <h2>5. Cosa vede un sito di te</h2>
+    <p class="nota">Questi dati li può leggere qualsiasi sito che visiti. Il blocco della pubblicità non nasconde il tuo IP: per quello serve una VPN o Tor.</p>
+    <table id="tabella-dati"></table>
+  </section>
+</main>
+
+<script>
+const risultati = [];
+
+function aggiungi(lista, nome, stato, testo) {
+  const li = document.createElement("li");
+  li.innerHTML = `<span class="nome"></span><span class="esito ${stato}"></span>`;
+  li.querySelector(".nome").textContent = nome;
+  li.querySelector(".esito").textContent = testo;
+  document.getElementById(lista).appendChild(li);
+  return li;
+}
+
+function imposta(li, stato, testo) {
+  const e = li.querySelector(".esito");
+  e.className = "esito " + stato;
+  e.textContent = testo;
+}
+
+function aggiornaPunteggio() {
+  const finiti = risultati.filter(r => r !== null);
+  const passati = finiti.filter(Boolean).length;
+  const el = document.getElementById("punteggio");
+  if (!finiti.length) return;
+  const perc = Math.round(passati / finiti.length * 100);
+  el.textContent = `${passati}/${finiti.length}`;
+  el.style.color = perc >= 90 ? "var(--ok)" : perc >= 60 ? "var(--attesa)" : "var(--ko)";
+  document.getElementById("riassunto").textContent = perc >= 90
+    ? "Ottima protezione: quasi tutto è stato bloccato."
+    : perc >= 60 ? "Protezione parziale: alcune cose sono passate." : "Protezione debole: molte pubblicità e tracciatori sono passati.";
+}
+
+function registra(passato) {
+  risultati.push(passato);
+  aggiornaPunteggio();
+}
+
+// 1. Richieste di rete verso server pubblicitari e di tracciamento reali.
+const SERVER = [
+  ["Google Ads", "https://pagead2.googlesyndication.com/pagead/show_ads.js"],
+  ["DoubleClick", "https://ad.doubleclick.net/favicon.ico"],
+  ["Google Analytics", "https://www.google-analytics.com/analytics.js"],
+  ["Facebook Pixel", "https://connect.facebook.net/en_US/fbevents.js"],
+  ["Amazon Ads", "https://c.amazon-adsystem.com/aax2/apstag.js"],
+  ["Taboola", "https://cdn.taboola.com/libtrc/loader.js"],
+  ["Outbrain", "https://widgets.outbrain.com/outbrain.js"],
+  ["Criteo", "https://static.criteo.net/js/ld/publishertag.js"],
+  ["Hotjar", "https://static.hotjar.com/c/hotjar-1.js"],
+  ["PopAds", "https://c1.popads.net/pop.js"],
+  ["Adsterra", "https://www.adsterra.com/favicon.ico"],
+  ["ExoClick", "https://syndication.exoclick.com/splash.php"],
+  ["Yandex Metrica", "https://mc.yandex.ru/metrika/tag.js"],
+  ["TikTok Pixel", "https://analytics.tiktok.com/i18n/pixel/events.js"],
+];
+
+SERVER.forEach(([nome, url]) => {
+  const li = aggiungi("lista-rete", nome, "attesa", "in prova");
+  const indice = risultati.push(null) - 1;
+  const fine = bloccato => {
+    if (risultati[indice] !== null) return;
+    risultati[indice] = bloccato;
+    imposta(li, bloccato ? "ok" : "ko", bloccato ? "Bloccato" : "Passato");
+    aggiornaPunteggio();
+  };
+  const timer = setTimeout(() => fine(true), 8000);
+  fetch(url, { mode: "no-cors", cache: "no-store" })
+    .then(() => { clearTimeout(timer); fine(false); })
+    .catch(() => { clearTimeout(timer); fine(true); });
+});
+
+// 2. Riquadri pubblicitari nascosti dal blocco "cosmetico".
+setTimeout(() => {
+  document.querySelectorAll(".finta").forEach(el => {
+    const nascosto = getComputedStyle(el).display === "none" || el.offsetHeight === 0;
+    const nome = el.id ? `#${el.id}` : "." + [...el.classList].filter(c => c !== "finta")[0];
+    aggiungi("lista-riquadri", `Riquadro ${nome}`, nascosto ? "ok" : "ko", nascosto ? "Nascosto" : "Visibile");
+    registra(nascosto);
+  });
+}, 4000);
+
+// 3. Pop-up aperto da solo, senza nessun tocco.
+window.addEventListener("load", () => {
+  let finestra = null;
+  try { finestra = window.open("https://example.com/?popup-automatico-utopia", "_blank", "width=400,height=400"); } catch (e) {}
+  const bloccato = !finestra || finestra.closed || typeof finestra.closed === "undefined";
+  aggiungi("lista-popup", "Pop-up automatico (senza tocco)", bloccato ? "ok" : "ko", bloccato ? "Bloccato" : "Aperto");
+  registra(bloccato);
+  if (finestra && !finestra.closed) try { finestra.close(); } catch (e) {}
+});
+
+document.getElementById("popup-clic").addEventListener("click", () => {
+  window.open("https://www.popads.net/", "_blank");
+  const li = aggiungi("lista-popup", "Pop-up pubblicitario dopo un tocco", "attesa", "Guarda tu");
+  setTimeout(() => imposta(li, "attesa", "Se si è aperto PopAds, non è bloccato"), 1500);
+});
+
+// 4. Reindirizzamento automatico senza tocco.
+document.getElementById("redirect").addEventListener("click", () => {
+  const stato = document.getElementById("redirect-stato");
+  let secondi = 6;
+  stato.textContent = `Non toccare lo schermo… ${secondi}`;
+  const t = setInterval(() => {
+    secondi--;
+    if (secondi > 0) { stato.textContent = `Non toccare lo schermo… ${secondi}`; return; }
+    clearInterval(t);
+    stato.textContent = "Tentativo di reindirizzamento in corso. Se sei ancora qui e Utopia ti ha chiesto conferma, il test è superato ✅";
+    location.href = "https://example.com/?reindirizzamento-utopia";
+  }, 1000);
+});
+
+// 5. Cosa vede un sito.
+function riga(nome, valore) {
+  const tr = document.createElement("tr");
+  tr.innerHTML = "<td></td><td></td>";
+  tr.children[0].textContent = nome;
+  tr.children[1].textContent = valore;
+  document.getElementById("tabella-dati").appendChild(tr);
+  return tr.children[1];
+}
+
+const cellaIp = riga("Il tuo indirizzo IP", "sto controllando…");
+const cellaLuogo = riga("Posizione stimata dall'IP", "sto controllando…");
+const cellaRete = riga("Gestore della rete", "sto controllando…");
+fetch("https://ipwho.is/?lang=it")
+  .then(r => r.json())
+  .then(d => {
+    cellaIp.textContent = d.ip || "non disponibile";
+    cellaLuogo.textContent = [d.city, d.region, d.country].filter(Boolean).join(", ") || "non disponibile";
+    cellaRete.textContent = (d.connection && (d.connection.isp || d.connection.org)) || "non disponibile";
+  })
+  .catch(() => { cellaIp.textContent = cellaLuogo.textContent = cellaRete.textContent = "non disponibile"; });
+
+const ua = navigator.userAgent;
+riga("Browser e telefono (user agent)", ua);
+riga("Sistema", (ua.match(/Android [\d.]+|Windows NT [\d.]+|iPhone OS [\d_]+|Mac OS X [\d_]+/) || ["sconosciuto"])[0]);
+riga("Lingua", navigator.languages ? navigator.languages.join(", ") : navigator.language);
+riga("Fuso orario", Intl.DateTimeFormat().resolvedOptions().timeZone);
+riga("Schermo", `${screen.width} × ${screen.height} (densità ${window.devicePixelRatio})`);
+riga("Processori / memoria", `${navigator.hardwareConcurrency || "?"} core, ${navigator.deviceMemory ? navigator.deviceMemory + " GB" : "memoria nascosta"}`);
+riga("Cookie attivi", navigator.cookieEnabled ? "sì" : "no");
+riga("Richiesta di non essere tracciato", navigator.globalPrivacyControl ? "sì (Global Privacy Control)" : navigator.doNotTrack === "1" ? "sì (Do Not Track)" : "no");
+
+// Impronta digitale del browser: un codice quasi unico calcolato dal disegno di un'immagine.
+try {
+  const c = document.createElement("canvas");
+  const x = c.getContext("2d");
+  x.textBaseline = "top"; x.font = "16px Arial"; x.fillStyle = "#7c3aed";
+  x.fillText("Utopia 👑🐍 impronta", 2, 2);
+  const dati = c.toDataURL();
+  let h = 0;
+  for (let i = 0; i < dati.length; i++) h = (h * 31 + dati.charCodeAt(i)) >>> 0;
+  riga("Impronta digitale del browser", h.toString(16).toUpperCase() + " (uguale su ogni sito: serve a riconoscerti anche senza cookie)");
+} catch (e) {
+  riga("Impronta digitale del browser", "bloccata");
+}
+
+// Indirizzo IP locale tramite WebRTC.
+const cellaWebrtc = riga("IP visibile via WebRTC", "sto controllando…");
+try {
+  const pc = new RTCPeerConnection({ iceServers: [{ urls: "stun:stun.l.google.com:19302" }] });
+  const trovati = new Set();
+  pc.createDataChannel("");
+  pc.onicecandidate = e => {
+    if (!e.candidate) return;
+    const m = e.candidate.candidate.match(/(\d{1,3}(\.\d{1,3}){3}|[a-f0-9-]+\.local)/i);
+    if (m) trovati.add(m[1]);
+  };
+  pc.createOffer().then(o => pc.setLocalDescription(o));
+  setTimeout(() => {
+    const veri = [...trovati].filter(ip => !ip.endsWith(".local"));
+    cellaWebrtc.textContent = veri.length ? veri.join(", ") + " (visibile)" : "nascosto (bene)";
+    pc.close();
+  }, 4000);
+} catch (e) {
+  cellaWebrtc.textContent = "WebRTC non disponibile";
+}
+</script>
+</body>
+</html>
