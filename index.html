@@ -125,20 +125,21 @@ function registra(passato) {
   aggiornaPunteggio();
 }
 
-// 1. Richieste di rete verso server pubblicitari e di tracciamento reali.
+// 1. Richieste verso server pubblicitari e di tracciamento reali.
+// Carico ogni script con un tag <script>: se il browser lo blocca scatta "onerror".
 const SERVER = [
-  ["Google Ads", "https://pagead2.googlesyndication.com/pagead/show_ads.js"],
-  ["DoubleClick", "https://ad.doubleclick.net/favicon.ico"],
+  ["Google Ads", "https://pagead2.googlesyndication.com/pagead/show_ads_impl.js"],
+  ["DoubleClick", "https://securepubads.g.doubleclick.net/pagead/managed/js/gpt/current/pubads_impl.js"],
   ["Google Analytics", "https://www.google-analytics.com/analytics.js"],
+  ["Google Tag Manager", "https://www.googletagmanager.com/gtag/js?id=G-UTOPIA"],
   ["Facebook Pixel", "https://connect.facebook.net/en_US/fbevents.js"],
   ["Amazon Ads", "https://c.amazon-adsystem.com/aax2/apstag.js"],
   ["Taboola", "https://cdn.taboola.com/libtrc/loader.js"],
   ["Outbrain", "https://widgets.outbrain.com/outbrain.js"],
   ["Criteo", "https://static.criteo.net/js/ld/publishertag.js"],
   ["Hotjar", "https://static.hotjar.com/c/hotjar-1.js"],
+  ["Scorecard Research", "https://sb.scorecardresearch.com/beacon.js"],
   ["PopAds", "https://c1.popads.net/pop.js"],
-  ["Adsterra", "https://www.adsterra.com/favicon.ico"],
-  ["ExoClick", "https://syndication.exoclick.com/splash.php"],
   ["Yandex Metrica", "https://mc.yandex.ru/metrika/tag.js"],
   ["TikTok Pixel", "https://analytics.tiktok.com/i18n/pixel/events.js"],
 ];
@@ -152,10 +153,13 @@ SERVER.forEach(([nome, url]) => {
     imposta(li, bloccato ? "ok" : "ko", bloccato ? "Bloccato" : "Passato");
     aggiornaPunteggio();
   };
-  const timer = setTimeout(() => fine(true), 8000);
-  fetch(url, { mode: "no-cors", cache: "no-store" })
-    .then(() => { clearTimeout(timer); fine(false); })
-    .catch(() => { clearTimeout(timer); fine(true); });
+  const s = document.createElement("script");
+  s.async = true;
+  s.onload = () => fine(false);
+  s.onerror = () => fine(true);
+  setTimeout(() => fine(true), 10000);
+  s.src = url;
+  document.head.appendChild(s);
 });
 
 // 2. Riquadri pubblicitari nascosti dal blocco "cosmetico".
