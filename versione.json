@@ -1,6 +1,6 @@
 {
-  "codice": 17,
-  "nome": "1.3.17",
-  "pagina": "https://github.com/utopiagg/utopia_browser/releases/tag/v1.3.17",
-  "novita": "Utopia per PC ha ora le stesse funzioni del telefono: Utopia Search, finestra privata, Onionizza, VPN e proxy."
+  "codice": 21,
+  "nome": "1.3.21",
+  "pagina": "https://github.com/utopiagg/utopia_browser/releases/tag/v1.3.21",
+  "novita": "Utopia per PC ora ha Utopia Vault: le tue password chiuse a chiave, riempite da sole nelle pagine di accesso (menu ⋮ → Utopia Vault)."
 }
